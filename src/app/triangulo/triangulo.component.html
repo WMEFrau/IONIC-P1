@@ -1,0 +1,111 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Triangulo</ion-card-title>
+    <ion-card-subtitle>Perimetro</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    El perimetro de un triangulo es la suma de las longitudes de sus tres lados.
+    En otras palabras, es la medida total del contorno o borde del triangulo.
+    <ion-grid>
+      <ion-row>
+        <ion-col
+          ><ion-text>
+            p = perimetro <br />
+            a = area <br />
+          </ion-text>
+          <ion-text> </ion-text
+        ></ion-col>
+        <ion-col>
+          <ion-img
+            src="https://www.neurochispas.com/wp-content/uploads/2022/07/Formulas-del-perimetro-y-del-area-de-un-triangulo.png"
+          ></ion-img>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <form [formGroup]="formTriangulo">
+      <ion-item>
+        <ion-input
+          label="Lado A (cm)"
+          type="number"
+          #iLadoA
+          labelPlacement="floating"
+          formControlName="iLadoA"
+        ></ion-input>
+      </ion-item>
+      <ion-item
+        *ngIf="
+          formTriangulo.get('iLadoA')?.hasError('required') &&
+          formTriangulo.get('iLadoA')?.touched
+        "
+      >
+        <ion-text color="danger">Ingrese valor para lado A.</ion-text>
+      </ion-item>
+      <ion-item
+        *ngIf="
+          formTriangulo.get('iLadoA')?.hasError('min') &&
+          formTriangulo.get('iLadoA')?.touched
+        "
+      >
+        <ion-text color="danger">Lado A debe ser mayor que 0.</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          label="Lado B (cm)"
+          type="number"
+          #iLadoB
+          labelPlacement="floating"
+          formControlName="iLadoB"
+        ></ion-input>
+      </ion-item>
+      <ion-item
+        *ngIf="
+          formTriangulo.get('iLadoB')?.hasError('required') &&
+          formTriangulo.get('iLadoB')?.touched
+        "
+      >
+        <ion-text color="danger">Ingrese valor para lado B.</ion-text>
+      </ion-item>
+      <ion-item
+        *ngIf="
+          formTriangulo.get('iLadoB')?.hasError('min') &&
+          formTriangulo.get('iLadoB')?.touched
+        "
+      >
+        <ion-text color="danger">Lado B debe ser mayor que 0.</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          label="Lado C (cm)"
+          type="number"
+          #iLadoC
+          labelPlacement="floating"
+          formControlName="iLadoC"
+        ></ion-input>
+      </ion-item>
+      <ion-item
+        *ngIf="
+          formTriangulo.get('iLadoC')?.hasError('required') &&
+          formTriangulo.get('iLadoC')?.touched
+        "
+      >
+        <ion-text color="danger">Ingrese valor para lado C.</ion-text>
+      </ion-item>
+      <ion-item
+        *ngIf="
+          formTriangulo.get('iLadoC')?.hasError('min') &&
+          formTriangulo.get('iLadoC')?.touched
+        "
+      >
+        <ion-text color="danger">Lado C debe ser mayor que 0.</ion-text>
+      </ion-item>
+      <ion-button
+        [disabled]="formTriangulo.invalid"
+        expand="block"
+        (click)="fnSubmit(iLadoA, iLadoB, iLadoC)"
+        shape="round"
+        >CALCULAR EL PERIMETRO</ion-button
+      >
+    </form>
+  </ion-card-content>
+</ion-card>

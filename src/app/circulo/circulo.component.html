@@ -1,0 +1,61 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Circulo</ion-card-title>
+    <ion-card-subtitle>Perimetro</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    El perimetro de un circulo es la longitud de la linea que forma su borde.
+    <ion-grid>
+      <ion-row>
+        <ion-col
+          ><ion-text>
+            p = perimetro <br />
+            a = area <br />
+            pi = 3.1416
+          </ion-text>
+          <ion-text> </ion-text
+        ></ion-col>
+        <ion-col>
+          <ion-img
+            src="https://www.problemasyecuaciones.com/geometria2D/area/circulo/img0.png"
+          ></ion-img>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <form [formGroup]="formCirculo">
+      <ion-item>
+        <ion-input
+          label="Radio (cm)"
+          type="number"
+          labelPlacement="floating"
+          #radio
+          formControlName="radio"
+        ></ion-input>
+      </ion-item>
+      <ion-item
+        *ngIf="
+          formCirculo.get('radio')?.hasError('required') &&
+          formCirculo.get('radio')?.touched
+        "
+      >
+        <ion-text color="danger">Ingrese valor para radio.</ion-text>
+      </ion-item>
+      <ion-item
+        *ngIf="
+          formCirculo.get('radio')?.hasError('min') &&
+          formCirculo.get('radio')?.touched
+        "
+      >
+        <ion-text color="danger">Radio debe ser mayor que 0.</ion-text>
+      </ion-item>
+      <ion-button
+        expand="block"
+        shape="round"
+        (click)="fnSubmitCircle(radio)"
+        [disabled]="formCirculo.invalid"
+        >CALCULAR EL PERIMETRO</ion-button
+      >
+    </form>
+  </ion-card-content>
+</ion-card>

@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Calculadora de perimetros </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="fnreload()">
+        <ion-icon name="reload"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item>
+            <ion-select
+              label="Figura geometrica"
+              placeholder="Elija una figura"
+              #selectFigura
+              (ionChange)="fnseleccion(selectFigura)"
+            >
+              <ion-select-option value="1">Circulo</ion-select-option>
+              <ion-select-option value="2">Triangulo</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="card_id==1">
+      <ion-col> <app-circulo /> </ion-col>
+    </ion-row>
+    <ion-row *ngIf="card_id==2">
+      <ion-col>
+        <app-triangulo />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
